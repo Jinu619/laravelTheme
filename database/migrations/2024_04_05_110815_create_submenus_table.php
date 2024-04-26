@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('submenus', function (Blueprint $table) {
+        Schema::create('_submenus', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('link');
@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('listing_order')->default(0);
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('menu_id')->references('id')->on('_menu')->onDelete('restrict');
         });
     }
 

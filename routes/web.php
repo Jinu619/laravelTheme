@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('auth.login');
+
+Route::resource('/login', \App\Http\Controllers\auth\LoginController::class);
+Route::resource('/register', \App\Http\Controllers\auth\RegisterController::class);
+Route::group(['middleware' => ['isLoggedin']], function () {
+    Route::resource('/', \App\Http\Controllers\HomeController::class);
 });
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('auth.login');
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('auth.register');

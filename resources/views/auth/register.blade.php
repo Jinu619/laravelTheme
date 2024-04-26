@@ -20,7 +20,8 @@
                     <p class="text-base font-bold leading-normal text-white-dark">Enter your email and
                         password to register</p>
                 </div>
-                <form class="space-y-5 dark:text-white" @submit.prevent="window.location='index.html'">
+                <form class="space-y-5 dark:text-white" method="POST" action="{{route('register.store')}}">
+                    @csrf
                     <div>
                         <label for="Name">Name</label>
                         <div class="relative text-white-dark">
@@ -71,7 +72,7 @@
                 {{-- social logins --}}
                 <div class="text-center dark:text-white">
                     Already have an account ?
-                    <a href="{{route('auth.login')}}" class="uppercase text-primary underline transition hover:text-black dark:hover:text-white">SIGN
+                    <a href="{{route('login.index')}}" class="uppercase text-primary underline transition hover:text-black dark:hover:text-white">SIGN
                         IN</a>
                 </div>
             </div>
